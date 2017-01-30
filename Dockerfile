@@ -8,12 +8,12 @@ RUN \
 	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu precise main restricted universe multiverse" && \
 	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu precise-updates main restricted universe multiverse" && \
 	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu precise-backports main restricted universe multiverse" && \
-	apt-get install -y wget r-base fastqc  && \
+	apt-get install -y wget unzip r-base fastqc  && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 # Define working directory.
 WORKDIR /data
-a
+
 # create our fastqc folder & files that are not installed by apt-get install fastqc :-(
 RUN mkdir /etc/fastqc && mkdir /etc/fastqc/Configuration
 ADD fastqc/* /etc/fastqc/Configuration/
