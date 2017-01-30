@@ -27,11 +27,8 @@ RUN mkdir /tools && cd /tools && wget http://www.bioinformatics.babraham.ac.uk/p
 USER root
 
 #RUN R -e \"source('https://bioconductor.org/biocLite.R'); biocLite('DESeq2')\"
-RUN R -e \"source('http://bioconductor.org/biocLite.R'); biocLite('DESeq2')\"
-
-# install pre-requisites
-# RUN apt-get install -y python-software-properties
-# RUN  apt-get update && apt-get install -y build-essential git libssl-dev  libpam0g-dev zlib1g-dev dh-autoreconf openssh-client openssl 
+RUN - -c "R -e \"source('http://bioconductor.org/biocLite.R'); biocLite('DESeq2')\""
+# -c means commands read from string 
 
 ADD Welcome.txt /etc/motd
 RUN mkdir /scripts
@@ -39,7 +36,5 @@ ADD *.sh /scripts.sh
 RUN chmod +x /scripts/*.sh
 
 EXPOSE 22 5901
-
 VOLUME /Coursedata
-
 CMD ["/bin/bash"]
