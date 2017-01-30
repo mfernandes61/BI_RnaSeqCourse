@@ -27,7 +27,7 @@ RUN mkdir /tools && cd /tools && wget http://www.bioinformatics.babraham.ac.uk/p
 USER root
 
 #RUN R -e \"source('https://bioconductor.org/biocLite.R'); biocLite('DESeq2')\"
-RUN /bin/bash - -c "R -e \"source('http://bioconductor.org/biocLite.R'); biocLite('DESeq2')\""
+RUN bash - -c "R -e \"source('http://bioconductor.org/biocLite.R'); biocLite('DESeq2')\""
 # -c means commands read from string 
 
 ADD Welcome.txt /etc/motd
