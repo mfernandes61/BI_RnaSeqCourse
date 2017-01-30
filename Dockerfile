@@ -27,7 +27,7 @@ RUN mkdir /tools && cd /tools && wget http://www.bioinformatics.babraham.ac.uk/p
 USER root
 
 #RUN R -e \"source('https://bioconductor.org/biocLite.R'); biocLite('DESeq2')\"
-RUN "R -e \"source('http://bioconductor.org/biocLite.R'); biocLite('DESeq2')\""
+RUN R -e \"source('http://bioconductor.org/biocLite.R'); biocLite('DESeq2')\"
 
 # install pre-requisites
 # RUN apt-get install -y python-software-properties
