@@ -1,0 +1,2 @@
+My attempt at creating a Docker environment for BI RNAseq course
+Mark Fernandes IFR Jan 2017
