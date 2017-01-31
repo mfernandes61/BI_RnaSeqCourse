@@ -32,7 +32,7 @@ USER root
 
 ADD Welcome.txt /etc/motd
 RUN mkdir /scripts
-ADD *.sh /scripts.sh
+ADD /scripts/*.sh /scripts/*.sh
 RUN chmod +x /scripts/*.sh && ./scripts/add2R.sh
 
 EXPOSE 22 5901
