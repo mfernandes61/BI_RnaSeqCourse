@@ -27,13 +27,13 @@ RUN mkdir /tools && cd /tools && wget http://www.bioinformatics.babraham.ac.uk/p
 USER root
 
 #RUN R -e \"source('https://bioconductor.org/biocLite.R'); biocLite('DESeq2')\"
-RUN bash - -c "R -e \"source('http://bioconductor.org/biocLite.R'); biocLite('DESeq2')\""
+# RUN bash - -c "R -e \"source('http://bioconductor.org/biocLite.R'); biocLite('DESeq2')\""
 # -c means commands read from string 
 
 ADD Welcome.txt /etc/motd
 RUN mkdir /scripts
 ADD *.sh /scripts.sh
-RUN chmod +x /scripts/*.sh
+RUN chmod +x /scripts/*.sh && ./scripts/add2R.sh
 
 EXPOSE 22 5901
 VOLUME /Coursedata
