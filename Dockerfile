@@ -4,11 +4,15 @@ MAINTAINER Mark Fernandes <mark.fernandes@ifr.ac.uk>
 RUN \
   apt-get update && \
    apt-get install -y  software-properties-common && \
-   add-apt-repository  "deb http://archive.ubuntu.com/ubuntu precise universe" && \
-	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu precise main restricted universe multiverse" && \
-	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu precise-updates main restricted universe multiverse" && \
-	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu precise-backports main restricted universe multiverse" && \
-	apt-get install -y wget unzip default-jre r-base fastqc  && \
+   add-apt-repository  "deb http://archive.ubuntu.com/ubuntu trusty universe" && \
+	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse" && \
+	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu trusty-updates main restricted universe multiverse" && \
+	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse" && \
+#  add-apt-repository  "deb http://archive.ubuntu.com/ubuntu precise universe" && \
+#	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu precise main restricted universe multiverse" && \
+#	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu precise-updates main restricted universe multiverse" && \
+#	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu precise-backports main restricted universe multiverse" && \
+	apt-get install -y wget unzip default-jre r-base samtools fastqc  && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 #
@@ -17,11 +21,14 @@ RUN mkdir /etc/fastqc && mkdir /etc/fastqc/Configuration
 ADD fastqc/* /etc/fastqc/Configuration/
 RUN mkdir /docs && cd /docs && wget http://www.bioinformatics.babraham.ac.uk/training/RNASeq_Course/RNA-Seq_analysis_course.pdf &&\
 	wget http://www.bioinformatics.babraham.ac.uk/training/RNASeq_Course/Analysing%20RNA-Seq%20data%20Exercise.pdf
-# RUN Mkdir /data && wget http://www.bioinformatics.babraham.ac.uk/training/RNASeq_Course/RNA-Seq_Course_Data.tar.gz
+ RUN mkdir /data && cd /data && wget http://www.bioinformatics.babraham.ac.uk/training/RNASeq_Course/RNA-Seq_Course_Data.tar.gz && \
+	tar zxf /data/*.tar.gz -C /data && rm /data/*.gz
 
 RUN mkdir /tools && cd /tools && wget http://www.bioinformatics.babraham.ac.uk/projects/seqmonk/seqmonk_v1.37.0.zip && \
-	wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/downloads/hisat2-2.0.5-Linux_x86_64.zip &&\
+	wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/downloads/hisat2-2.0.5-Linux_x86_64.zip && unzip /tools/*.zip && rm /tools/*.zip &&\
 	mkdir /tools/examples && cd /tools/examples && wget http://www.bioinformatics.babraham.ac.uk/projects/seqmonk/example_seqmonk_data.smk
+# cd /tools/SeqMonk chmod 755 seqmonk and ln -s  to /usr/lbin.  cd
+
 USER root
 
 #RUN R -e \"source('https://bioconductor.org/biocLite.R'); biocLite('DESeq2')\"
