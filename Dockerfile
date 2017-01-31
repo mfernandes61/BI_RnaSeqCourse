@@ -8,7 +8,7 @@ RUN \
 	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu precise main restricted universe multiverse" && \
 	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu precise-updates main restricted universe multiverse" && \
 	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu precise-backports main restricted universe multiverse" && \
-	apt-get install -y wget unzip r-base fastqc  && \
+	apt-get install -y wget unzip default-jre r-base fastqc  && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 #
