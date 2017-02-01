@@ -6,6 +6,7 @@ RUN REL="$(lsb_release -c -s)"
 # Add the appropriate repositories including CRAN
 RUN \
   apt-get update && \
+  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 && \
    apt-get install -y  software-properties-common && \
    add-apt-repository  "deb http://archive.ubuntu.com/ubuntu '$REL' universe" && \
 	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu '$REL' main restricted universe multiverse" && \
