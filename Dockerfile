@@ -11,7 +11,7 @@ RUN \
 	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu trusty-updates main restricted universe multiverse" && \
 	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse" && \
    add-apt-repository  "deb http://cloud.r-project.org/bin/linux/ubuntu trusty/ " && \
-	apt-get install -y wget unzip default-jre r-base samtools fastqc  && \
+   apt-get update && apt-get install -y wget unzip default-jre r-base samtools fastqc  && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 #
