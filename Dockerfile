@@ -2,15 +2,16 @@ FROM dorowu/ubuntu-desktop-lxde-vnc
 MAINTAINER Mark Fernandes <mark.fernandes@ifr.ac.uk>
 # Environment to deliver BI RNAseq course using  LXDE and VNC server under Docker
 
+RUN REL="$(lsb_release -c -s)"
 # Add the appropriate repositories including CRAN
 RUN \
   apt-get update && \
    apt-get install -y  software-properties-common && \
-   add-apt-repository  "deb http://archive.ubuntu.com/ubuntu trusty universe" && \
-	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse" && \
-	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu trusty-updates main restricted universe multiverse" && \
-	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse" && \
-   add-apt-repository  "deb http://cloud.r-project.org/bin/linux/ubuntu trusty/ " && \
+   add-apt-repository  "deb http://archive.ubuntu.com/ubuntu '$REL' universe" && \
+	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu '$REL' main restricted universe multiverse" && \
+	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu '$REL'-updates main restricted universe multiverse" && \
+	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu '$REL'-backports main restricted universe multiverse" && \
+   add-apt-repository  "deb http://cloud.r-project.org/bin/linux/ubuntu '$REL'/" && \
    apt-get update && apt-get install -y wget unzip default-jre r-base samtools fastqc  && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
