@@ -11,7 +11,7 @@ RUN \
 	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu '$REL' main restricted universe multiverse" && \
 	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu '$REL'-updates main restricted universe multiverse" && \
 	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu '$REL'-backports main restricted universe multiverse" && \
-   add-apt-repository  "deb http://cloud.r-project.org/bin/linux/ubuntu '$REL'/" && \
+   add-apt-repository  "deb http://cran.ma.imperial.ac.uk/bin/linux/ubuntu '$REL'/" && \
    apt-get update && apt-get install -y wget unzip default-jre r-base samtools fastqc  && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
