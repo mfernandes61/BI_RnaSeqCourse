@@ -48,7 +48,7 @@ ADD Welcome.txt /etc/motd
 RUN mkdir /scripts
 ADD /scripts/*.sh /scripts/
 RUN chmod +x /scripts/*.sh 
-RUN ./scripts/add2R.sh
+# RUN ./scripts/add2R.sh
 
 EXPOSE 22 
 VOLUME /Coursedata
