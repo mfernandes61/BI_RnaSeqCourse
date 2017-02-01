@@ -22,10 +22,11 @@ RUN mkdir /docs && cd /docs && wget http://www.bioinformatics.babraham.ac.uk/tra
 
 RUN mkdir /tools && cd /tools && wget http://www.bioinformatics.babraham.ac.uk/projects/seqmonk/seqmonk_v1.37.0.zip && \
 	wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/downloads/hisat2-2.0.5-Linux_x86_64.zip && unzip seq*.zip && \
-	unzip hisat*.zip && rm /tools/*.zip && chmod 755 /tools/Seq*/seqmonk && ln -s /tools/Seq*/seqmonk / usr/local/bin && \
-	ln -s /tools/hisat2*/hisat2 /usr/local/bin && mkdir /tools/examples && cd /tools/examples && \
+	unzip hisat*.zip && rm /tools/*.zip && chmod 755 /tools/Seq*/seqmonk && ln -s /tools/Seq*/seqmonk / usr/local/bin/ && \
+	ln -s /tools/hisat2*/hisat2 /usr/local/bin/ && mkdir /tools/examples && cd /tools/examples && \
 	wget http://www.bioinformatics.babraham.ac.uk/projects/seqmonk/example_seqmonk_data.smk
-# cd /tools/SeqMonk chmod 755 seqmonk and ln -s  to /usr/local/bin.  ln -s /tools/hisat2*/hisat2 /usr/local/bin
+# cd /tools/SeqMonk chmod 755 seqmonk and ln -s  to /usr/local/bin/.  ln -s /tools/hisat2*/hisat2 /usr/local/bin/
+
 
 USER root
 #RUN R -e \"source('https://bioconductor.org/biocLite.R'); biocLite('DESeq2')\"
