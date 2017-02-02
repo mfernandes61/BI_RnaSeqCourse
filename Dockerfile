@@ -19,7 +19,7 @@ RUN \
 	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu trusty-updates main restricted universe multiverse" && \
 	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse" && \
    add-apt-repository  "deb http://cran.ma.imperial.ac.uk/bin/linux/ubuntu trusty/" && \
-   apt-get update && apt-get install -y wget unzip default-jre r-base r-base-dev samtools fastqc  && \
+   apt-get update && apt-get install -y wget unzip default-jre r-base r-base-dev samtools fastqc \
 		libcurl4-openssl-dev libxml2-dev &&\
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
@@ -53,5 +53,4 @@ RUN add2R.sh
 
 EXPOSE 22 
 VOLUME /Coursedata
-
 
