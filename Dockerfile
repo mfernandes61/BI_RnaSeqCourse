@@ -20,6 +20,7 @@ RUN \
 	add-apt-repository  "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse" && \
    add-apt-repository  "deb http://cran.ma.imperial.ac.uk/bin/linux/ubuntu trusty/" && \
    apt-get update && apt-get install -y wget unzip default-jre r-base r-base-dev samtools fastqc  && \
+		libcurl4-openssl-dev libxml2-dev &&\
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
 
 #
@@ -47,8 +48,8 @@ USER root
 ADD Welcome.txt /etc/motd
 RUN mkdir /scripts
 ADD /scripts/*.sh /scripts/
-RUN chmod +x /scripts/*.sh 
-# RUN ./scripts/add2R.sh
+RUN chmod +x /scripts/*.sh && ln -s /scripts/add2R /usr/local/bin/
+RUN add2R.sh
 
 EXPOSE 22 
 VOLUME /Coursedata
